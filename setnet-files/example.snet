@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<setnet>
+    <PLACE_COUNTER>5</PLACE_COUNTER>
+    <TRANSITION_COUNTER>5</TRANSITION_COUNTER>
+    <ARC_COUNTER>11</ARC_COUNTER>
+    <place incoming="t3" outgoing="t4" name="p4">
+        <x>351.0</x>
+        <y>200.0</y>
+        <token>false</token>
+    </place>
+    <place incoming="t1" outgoing="t3" name="p2">
+        <x>215.0</x>
+        <y>157.0</y>
+        <token>false</token>
+    </place>
+    <place incoming="t0" outgoing="t2" name="p3">
+        <x>506.0</x>
+        <y>155.0</y>
+        <token>false</token>
+    </place>
+    <place incoming="t4" outgoing="t1 t0" name="p0">
+        <x>360.0</x>
+        <y>41.0</y>
+        <token>true</token>
+    </place>
+    <place incoming="t2" outgoing="t3" name="p1">
+        <x>355.0</x>
+        <y>299.0</y>
+        <token>false</token>
+    </place>
+    <transition incoming="a2" outgoing="a3" name="t1">
+        <x>262.0</x>
+        <y>92.0</y>
+    </transition>
+    <transition incoming="a0" outgoing="a1" name="t0">
+        <x>457.0</x>
+        <y>85.0</y>
+    </transition>
+    <transition incoming="a5 a4" outgoing="a8" name="t3">
+        <x>188.0</x>
+        <y>236.0</y>
+    </transition>
+    <transition incoming="a7" outgoing="a6" name="t2">
+        <x>483.0</x>
+        <y>233.0</y>
+    </transition>
+    <transition incoming="a9" outgoing="a10" name="t4">
+        <x>354.0</x>
+        <y>134.0</y>
+    </transition>
+    <arc place="p1" transition="t2" name="a6">
+        <x>0.0</x>
+        <y>0.0</y>
+        <flow>TRANSITION_TO_PLACE</flow>
+    </arc>
+    <arc place="p4" transition="t3" name="a8">
+        <x>0.0</x>
+        <y>0.0</y>
+        <flow>TRANSITION_TO_PLACE</flow>
+    </arc>
+    <arc place="p4" transition="t4" name="a9">
+        <x>0.0</x>
+        <y>0.0</y>
+        <flow>PLACE_TO_TRANSITION</flow>
+    </arc>
+    <arc place="p3" transition="t0" name="a1">
+        <x>0.0</x>
+        <y>0.0</y>
+        <flow>TRANSITION_TO_PLACE</flow>
+    </arc>
+    <arc place="p1" transition="t3" name="a5">
+        <x>0.0</x>
+        <y>0.0</y>
+        <flow>PLACE_TO_TRANSITION</flow>
+    </arc>
+    <arc place="p2" transition="t3" name="a4">
+        <x>0.0</x>
+        <y>0.0</y>
+        <flow>PLACE_TO_TRANSITION</flow>
+    </arc>
+    <arc place="p3" transition="t2" name="a7">
+        <x>0.0</x>
+        <y>0.0</y>
+        <flow>PLACE_TO_TRANSITION</flow>
+    </arc>
+    <arc place="p0" transition="t4" name="a10">
+        <x>0.0</x>
+        <y>0.0</y>
+        <flow>TRANSITION_TO_PLACE</flow>
+    </arc>
+    <arc place="p0" transition="t1" name="a2">
+        <x>0.0</x>
+        <y>0.0</y>
+        <flow>PLACE_TO_TRANSITION</flow>
+    </arc>
+    <arc place="p2" transition="t1" name="a3">
+        <x>0.0</x>
+        <y>0.0</y>
+        <flow>TRANSITION_TO_PLACE</flow>
+    </arc>
+    <arc place="p0" transition="t0" name="a0">
+        <x>0.0</x>
+        <y>0.0</y>
+        <flow>PLACE_TO_TRANSITION</flow>
+    </arc>
+</setnet>

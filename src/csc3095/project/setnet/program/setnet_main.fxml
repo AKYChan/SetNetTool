@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Imports for the program -->
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<!-- Core components of the UI -->
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="csc3095.project.setnet.program.Controller">
+
+   <!-- The top menu features -->
+   <top>
+      <VBox BorderPane.alignment="CENTER">
+         <children>
+
+            <!-- Typical system menu that allows the user to use the options normally provided for the file, edit, help, about, etc. -->
+            <MenuBar fx:id="programMenus">
+              <menus>
+                <Menu fx:id="fileMenu" mnemonicParsing="false" text="File">
+                     <items>
+                        <MenuItem fx:id="newMenuItem" mnemonicParsing="false" onAction="#onNew" text="New SET-net" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem fx:id="openMenuItem" mnemonicParsing="false" onAction="#onOpen" text="Open..." />
+                        <MenuItem fx:id="saveMenuItem" mnemonicParsing="false" onAction="#onSave" text="Save" />
+                     </items></Menu>
+                  <Menu mnemonicParsing="false" text="Verify">
+                    <items>
+                      <MenuItem fx:id="verifyMenuItem" mnemonicParsing="false" onAction="#onVerify" text="Deadlock-freeness" />
+                    </items>
+                  </Menu>
+                <Menu fx:id="helpMenu" mnemonicParsing="false" text="Help">
+                     <items>
+                        <MenuItem fx:id="helpMenuItem" mnemonicParsing="false" onAction="#onHelp" text="Help" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem fx:id="aboutMenuItem" mnemonicParsing="false" onAction="#onAbout" text="About tool" />
+                     </items></Menu>
+              </menus>
+            </MenuBar>
+
+            <!-- The core buttons that allow the user to do the creation and drawing of the SET-net -->
+            <HBox spacing="2.0">
+               <children>
+                  <Region HBox.hgrow="ALWAYS" />
+                  <ToggleButton fx:id="autoRunButton" mnemonicParsing="false" onAction="#onAutoRun" text="A-Run">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="toggleButtons" />
+                     </toggleGroup></ToggleButton>
+                  <ToggleButton fx:id="autoMaxRunButton" mnemonicParsing="false" onAction="#onAutoMaxRun" text="A-Max run" toggleGroup="$toggleButtons" />
+                  <ToggleButton fx:id="runButton" mnemonicParsing="false" onAction="#onSeqFire" text="Run" toggleGroup="$toggleButtons" />
+                  <ToggleButton fx:id="maxRunButton" mnemonicParsing="false" onAction="#onMaxFire" text="Max run" toggleGroup="$toggleButtons" />
+                  <ToggleButton fx:id="selectButton" mnemonicParsing="false" onAction="#onSelect" text="Select" toggleGroup="$toggleButtons" />
+                  <ToggleButton fx:id="arcButton" mnemonicParsing="false" onAction="#onArc" text="Arc" toggleGroup="$toggleButtons" />
+                  <ToggleButton fx:id="placeButton" mnemonicParsing="false" onAction="#onPlace" text="Place" toggleGroup="$toggleButtons" />
+                  <ToggleButton fx:id="transitionButton" mnemonicParsing="false" onAction="#onTransition" text="Transition" toggleGroup="$toggleButtons" />
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </HBox>
+            <Separator prefWidth="200.0" />
+         </children>
+      </VBox>
+   </top>
+
+   <!-- Drawing pane that allows the user to create and draw the places, transitions and arcs -->
+   <center>
+      <ScrollPane fx:id="drawingPaneParent" fitToHeight="true" fitToWidth="true" pannable="true" BorderPane.alignment="CENTER">
+         <content>
+            <Pane fx:id="drawingPane" />
+         </content>
+         <BorderPane.margin>
+            <Insets left="5.0" top="5.0" />
+         </BorderPane.margin>
+      </ScrollPane>
+   </center>
+
+   <!-- Status of the program to be put at the bottom of the program -->
+   <bottom>
+      <VBox BorderPane.alignment="CENTER">
+         <children>
+            <Separator />
+            <HBox>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+               <children>
+                  <Region HBox.hgrow="ALWAYS" />
+                  <Button fx:id="clearConsoleButton" mnemonicParsing="false" onAction="#onClearConsole" text="Clear console" />
+               </children>
+            </HBox>
+            <TextArea fx:id="console" editable="false" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="100.0" prefWidth="590.0" />
+         </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+      </VBox>
+   </bottom>
+   <right>
+      <VBox prefWidth="150.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox prefWidth="200.0" spacing="5.0">
+               <children>
+                  <Region maxHeight="-Infinity" minHeight="-Infinity" HBox.hgrow="ALWAYS" />
+                  <Button fx:id="backStepButton" disable="true" mnemonicParsing="false" text="&lt;&lt;" />
+                  <Button fx:id="forwardStepButton" disable="true" mnemonicParsing="false" text="&gt;&gt;" />
+               </children>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </HBox>
+            <TextArea fx:id="stepConsole" editable="false" VBox.vgrow="ALWAYS" />
+         </children>
+         <padding>
+            <Insets left="5.0" right="5.0" />
+         </padding>
+      </VBox>
+   </right>
+
+</BorderPane>
